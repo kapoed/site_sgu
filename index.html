@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mozilla - Эволюция Сети</title>
-    <!-- Подключаем Tailwind CSS для современной верстки -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Подключаем красивый шрифт Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
@@ -27,26 +25,19 @@
 </head>
 <body class="min-h-full flex items-center justify-center p-4 sm:p-6 md:p-8">
 
-    <!-- Главная карточка с эффектом матового стекла (Glassmorphism) -->
     <main class="max-w-xl w-full bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
         
-        <!-- Декоративные фоновые элементы -->
         <div class="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- Контент -->
         <div class="relative z-10 flex flex-col items-center text-center">
             
-            <!-- Обязательный заголовок h1 (динамически меняется через JS) -->
             <h1 id="main-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent mb-8 drop-shadow-sm transition-all duration-300">
                 Mozilla — это круто
             </h1>
 
-            <!-- Кликабельный логотип (меняется при клике по заданию) -->
             <div class="relative group cursor-pointer mb-8">
-                <!-- Встроенная подсказка для препода, чтобы он понял, что надо кликнуть -->
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-slate-950/80 border border-slate-800 text-[10px] text-slate-400 px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 select-none">
-                    Кликни, чтобы изменить тему
                 </div>
                 <img id="firefox-logo" 
                      src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" 
@@ -54,12 +45,10 @@
                      class="w-40 h-40 object-contain neon-glow select-none">
             </div>
 
-            <!-- Обязательный первый абзац по методичке -->
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
                 В <span class="text-orange-400 font-semibold">Mozilla</span> мы представляем собой глобальное сообщество единомышленников, стремящихся сделать Интернет открытым, безопасным и доступным для каждого человека в мире.
             </p>
 
-            <!-- Обязательный список (оформлен в виде технологичных тегов) -->
             <ul class="flex flex-wrap justify-center gap-2 mb-8 select-none">
                 <li class="bg-slate-950/50 border border-slate-800 hover:border-orange-500/50 text-orange-400 text-xs sm:text-sm px-4 py-2 rounded-xl transition duration-300 flex items-center gap-1.5 font-semibold">
                     <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
@@ -75,7 +64,6 @@
                 </li>
             </ul>
 
-            <!-- Обязательный второй абзац и ссылка на манифест -->
             <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 max-w-md font-light">
                 Мы работаем вместе, чтобы сохранить Интернет живым. Прочитайте 
                 <a href="https://www.mozilla.org/ru/about/manifesto/" 
@@ -89,7 +77,6 @@
                 чтобы узнать больше о ценностях и принципах, которыми мы руководствуемся.
             </p>
 
-            <!-- Обязательная интерактивная кнопка -->
             <button id="user-btn" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:opacity-90 active:scale-95 text-white font-bold text-sm px-8 py-3.5 rounded-2xl shadow-lg shadow-purple-500/20 transition-all duration-200">
                 Сменить пользователя
             </button>
@@ -97,14 +84,11 @@
         </div>
     </main>
 
-    <!-- Скрипт интерактивности, строго соблюдающий требования лабораторной работы -->
     <script>
-        // 1. Логика смены картинок при клике (Стандартный Firefox <-> Developer Edition)
         const myImage = document.getElementById('firefox-logo');
         
-        // Ссылки на красивую дефолтную и неоновую иконки
         const logoClassic = 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg';
-        const logoDeveloper = 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Mozilla_Firefox_Developer_Edition_logo_2019.svg';
+        const logoDeveloper = 'https://upload.wikimedia.org/wikipedia/commons/8/84/Mozilla_Firefox_3.5_logo.png';
 
         myImage.onclick = function() {
             const mySrc = myImage.getAttribute('src');
@@ -115,13 +99,11 @@
             }
         };
 
-        // 2. Логика приветствия пользователя по имени
         const myButton = document.getElementById('user-btn');
         const myHeading = document.getElementById('main-title');
 
         function setUserName() {
             const myName = prompt('Пожалуйста, введите ваше имя:');
-            // Если пользователь нажал Отмена или ввел пустоту, не ломаем верстку
             if(!myName) {
                 setUserName();
             } else {
@@ -130,7 +112,6 @@
             }
         }
 
-        // Инициализация при первой загрузке
         if(!localStorage.getItem('name')) {
             setUserName();
         } else {
@@ -138,7 +119,6 @@
             myHeading.textContent = 'Mozilla — это круто, ' + storedName;
         }
 
-        // Вешаем событие на кнопку
         myButton.onclick = function() {
             setUserName();
         };
